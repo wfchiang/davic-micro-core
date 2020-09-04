@@ -5,11 +5,11 @@ import (
 	"log"
 	"os"
 	"net/http"
-	"encoding/json"
-	"html/template"
+	// "encoding/json"
+	// "html/template"
 	"github.com/gorilla/mux"
-	"io/ioutil"
-	"github.com/wfchiang/davic"
+	// "io/ioutil"
+	// "github.com/wfchiang/davic"
 )
 
 func pingHandler (http_resp http.ResponseWriter, http_reqt *http.Request) {
@@ -24,7 +24,7 @@ func main () {
 	mux_router := mux.NewRouter()
 
 	mux_router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", file_server))
-	mux_router.HandleFunc("/ping", homepageHandler)
+	mux_router.HandleFunc("/ping", pingHandler)
 
 	http.Handle("/", mux_router)
 
