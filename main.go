@@ -17,13 +17,9 @@ func pingHandler (http_resp http.ResponseWriter, http_reqt *http.Request) {
 }
 
 func main () {
-	log.Println("Init File Server...")
-	file_server := http.FileServer(http.Dir("./static/"))
-
 	log.Println("Starting Davic-Micro-Core...")
 	mux_router := mux.NewRouter()
 
-	mux_router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", file_server))
 	mux_router.HandleFunc("/ping", pingHandler)
 
 	http.Handle("/", mux_router)
