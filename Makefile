@@ -6,6 +6,9 @@ build:
 	glide install 
 	go mod init github.com/wfchiang/davic-micro-core 
 
+gcp: clean build 
+	gcloud app deploy 
+
 local: 
 	go run main.go 
 
